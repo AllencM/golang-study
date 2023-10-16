@@ -30,4 +30,22 @@ func testAtoi() {
 	v10 := strconv.FormatInt(v9, 2)
 	fmt.Println(v10)
 
+	v11 := "99.999999111111"
+	//  字符串转浮点型，第二个参数为精度 float32 / float64
+	v12, _ := strconv.ParseFloat(v11, 64)
+	fmt.Println(v12)
+
+	// 超过float32 精度，结果就不对了
+	v13 := "99.1111111111111111111111111111111111111111"
+	v14, _ := strconv.ParseFloat(v13, 32)
+	v15, _ := strconv.ParseFloat(v13, 64)
+	fmt.Println(v14)
+	fmt.Println(v15)
+
+	q := "hello，world"
+	fmt.Println(q)
+	fmt.Println(strconv.Quote(q))
+	// 字符串转 ascii
+	fmt.Println(strconv.QuoteToASCII(q))
+
 }
