@@ -13,3 +13,7 @@ func TestModifyMap(t *testing.T) {
 func TestIterateMap(t *testing.T) {
 	iterateMap()
 }
+
+func TestSortMap(t *testing.T) {
+	sortMap()
+}

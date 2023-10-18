@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // 字典(无序的)
 func initMap() {
@@ -64,5 +67,50 @@ func iterateMap() {
 	for key, value := range testMap3 {
 		fmt.Println(key, value)
 	}
+
+	for _, value := range testMap3 {
+		fmt.Println(value)
+	}
+
+	for key := range testMap3 {
+		fmt.Println(key)
+	}
+
+	// kv 键值对调
+	invMap := make(map[string]string, 3)
+	invMap["one"] = "1"
+	invMap["two"] = "2"
+	invMap["three"] = "3"
+	for k, v := range invMap {
+		invMap[v] = k
+	}
+	for k, v := range invMap {
+		fmt.Println(k, v)
+	}
+}
+
+// 对map进行排序，通过为 key 和 value 创建切片，然后对切片进行排序
+func sortMap() {
+	invMap := make(map[string]int, 3)
+	invMap["one"] = 1
+	invMap["two"] = 2
+	invMap["three"] = 3
+
+	keys := make([]string, 0)
+	for k := range invMap {
+		keys = append(keys, k)
+	}
+
+	// 对key 进行排序
+	sort.Strings(keys)
+	fmt.Println("sort by keys:", keys)
+
+	values := make([]int, 0)
+	for _, val := range invMap {
+		values = append(values, val)
+	}
+
+	sort.Ints(values)
+	fmt.Println("sort by values:", values)
 
 }
