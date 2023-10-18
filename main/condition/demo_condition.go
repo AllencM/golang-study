@@ -66,3 +66,60 @@ func switchCondition(score float64) {
 	}
 
 }
+
+// 和条件语句、分支语句一样，左花括号 { 必须与 for 处于同一行；
+// 不支持 while 和 do-while 结构的循环语句；
+// 可以通过 for-range 结构对可迭代集合进行遍历；
+// 支持基于条件判断进行循环迭代；
+// 允许在循环条件中定义和初始化变量，且支持多重赋值
+func testFor() {
+	// 无限循环
+	sum := 0
+	i := 0
+	for {
+		i++
+		if i > 100 {
+			break
+		}
+		sum += i
+	}
+	fmt.Println(sum)
+
+	// 基于条件判断循环
+	sum = 0
+	i = 0
+	for i < 100 {
+		i++
+		sum += i
+	}
+	fmt.Println(sum)
+}
+
+// go 同样支持跳出外层循环
+func testBreak() {
+outer:
+	for i := 0; i < 10; i++ {
+		for j := 0; j < 10; j++ {
+			if i > 5 {
+				break outer
+			}
+			fmt.Println(i)
+		}
+	}
+}
+
+// go 支持 goto 跳转指定位置，跳转到本函数内的某个标签
+// goto 容易造成代码逻辑混乱，导致新的bug
+func testGoto() {
+	arr := []string{"1", "2", "3", "4"}
+	for i := 0; i < len(arr); i++ {
+		// arr[i] 的值是3的时候，跳转到 exit 标签
+		if arr[i] == "3" {
+			goto exit
+		}
+		fmt.Println(arr[i])
+	}
+
+exit:
+	fmt.Println("跳转到了exit")
+}
