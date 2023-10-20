@@ -1,6 +1,10 @@
 package function
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"reflect"
+)
 
 // go 中 没有public、protected 和 private  关键字
 // 通过大小写字母来区分可见性
@@ -105,4 +109,48 @@ func myFunc2(a []int) {
 	for _, v := range a {
 		fmt.Println(v)
 	}
+}
+
+// 任意类型的变长参数（泛型）
+// go 并没有在语法层面提供对泛型的支持
+// interface{} 是一个空的接口，可以用于标识任意类型，为了保证代码类型安全，需要在运行时通过反射对数据类型进行检查
+func customPrintf(args ...interface{}) {
+	for _, arg := range args {
+		switch reflect.TypeOf(arg).Kind() {
+		case reflect.Int:
+			fmt.Println(arg, "is an int value")
+		case reflect.String:
+			fmt.Printf("\"%s\" is a string value.\n", arg)
+		case reflect.Array:
+			fmt.Println(arg, "is an array type")
+		default:
+			fmt.Println(arg, "is an unknown type")
+		}
+	}
+}
+
+// 多返回值
+func customAdd(a, b *int) (int, error) {
+	// *a *b  指向的是实际值  &a &b 指向的是内存地址
+	if *a < 0 || *b < 0 {
+		err := errors.New("只支持非负整数相加")
+		return 0, err
+	}
+
+	*a *= 2
+	*b *= 3
+	return *a + *b, nil
+}
+
+// 命名返回值
+// 在设置多返回值时，还可以对返回值进行变量命名，这样，我们就可以在函数中直接对返回值变量进行赋值，而不必每次都按照指定的返回值格式返回多个变量
+func customAdd2(a, b *int) (c int, err error) {
+	if *a < 0 || *b < 0 {
+		err = errors.New("只支持非负整数相加")
+		return
+	}
+	*a *= 2
+	*b *= 3
+	c = *a + *b
+	return
 }
