@@ -62,7 +62,11 @@ func deferAdd(a, b int) func() int {
 }
 
 func goDeferAdd() {
+	// 这个时候没有执行闭包，
 	addFunc := deferAdd(1, 2)
 	// 这里才会真正执行对应操作
 	fmt.Println(addFunc())
+
+	// 在addFunc := deferAdd(1, 2) 的时候，并没有之心闭包，只有真正运行addFunc 的时候，才会执行对应逻辑
+	// 因此可以通过将函数返回值声明为函数类型来实现业务逻辑中的延迟执行，让执行时机完全掌握在开发者手中
 }
