@@ -22,5 +22,5 @@ func TestNewStudent(t *testing.T) {
 }
 
 func TestFoo(t *testing.T) {
-	foo()
+	GoFoo()
 }
