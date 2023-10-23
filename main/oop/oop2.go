@@ -40,6 +40,7 @@ func (s Student) GetScore() float64 {
 
 // 指针方法
 // 在类的成员方法中，可以通过声明的类型变量来访问类的属性和其他方法（Go 语言不支持隐藏的 this 指针，所有的东西都是显式声明）。
+// 指针方法只能通过指针来调用
 // GetName 是一个只读方法，如果我们要在外部通过 Student 类暴露的方法设置 name 值，可以这么做：
 
 func (s *Student) SetName(name string) {
@@ -87,7 +88,7 @@ func tst() {
 
 // go String, toString（java）
 func (s Student) String() string {
-	return fmt.Sprintf("{id: %d, name: %s, male: %t, score: %f}",
+	return fmt.Sprintf("{id: %d, name: %s, male: %d, score: %f}",
 		s.id, s.name, s.male, s.score)
 }
 

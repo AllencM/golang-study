@@ -4,14 +4,6 @@ import (
 	"fmt"
 )
 
-func main() {
-	// testForLoop()
-	// testType()
-	// testFloat()
-	// testFor()
-	testAtoi()
-}
-
 func testForLoop() {
 	sum := 0
 	for i := 0; i < 10; i++ {

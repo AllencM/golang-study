@@ -19,5 +19,8 @@ func TestNewStudent(t *testing.T) {
 
 	student2 := NewStudent2(2, "123z", 1)
 	fmt.Println(student2)
+}
 
+func TestFoo(t *testing.T) {
+	foo()
 }
