@@ -6,6 +6,8 @@ import "fmt"
 // 组合就是将一个类型嵌入到到另外一个类型，从而构建新的类型
 
 type Animal struct {
+	// name 小写 私有化，当前包下访问
+	// Name 大写 都能访问
 	name string
 }
 
