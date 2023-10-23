@@ -125,6 +125,3 @@ func callFilter() {
 	fmt.Println(sum)
 
 }
-
-//func filter(users []map[string]string) []map[string]string {
-//}
