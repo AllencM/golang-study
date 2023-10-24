@@ -44,3 +44,17 @@ func main1() {
 }
 
 // 方法子集
+// 接口赋值并不要求两个接口完全等价（方法完全相同）。如果接口 A 的方法列表是接口 B 的方法列表的子集，那么接口 B 也可以赋值给接口 A
+// Number1 Number2 的方法列表是Number3的方法列表的子集
+// Number3 可以复制给 Number1 2
+
+type Number3 interface {
+	Equal(i int) bool
+	LessThan(i int) bool
+	MoreThan(i int) bool
+	Add(i int)
+}
+
+func (n *Number) Add(i int) {
+	*n = *n + Number(i)
+}
