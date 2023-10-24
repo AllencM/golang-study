@@ -24,3 +24,15 @@ func TestNewStudent(t *testing.T) {
 func TestFoo(t *testing.T) {
 	GoFoo()
 }
+
+func TestReflectDemo(t *testing.T) {
+	reflectDemo()
+}
+
+func TestGetFiledAndMethod(t *testing.T) {
+	getFiledAndMethod()
+}
+
+func TestTestPut(t *testing.T) {
+	TestPut()
+}
