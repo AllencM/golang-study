@@ -126,8 +126,14 @@ func HelloWorld() error {
 
 func fly() {
 	err := HelloWorld()
+
+	fmt.Printf("%T,%v\n", err, err)
 	fmt.Println(err == nil)
-	// tm 竟然是false
+	// tm 竟然是false 原因是 error 是个接口，动态类型和动态值都是nil 才是nil，现在动态类型已经是 *MyError了,只是没有值而已
+
+	var err2 *MyError
+	fmt.Println(err2 == nil)
+
 }
 
 /*
@@ -140,4 +146,5 @@ go的interface设计成了两部分：type 和value
 
 上面的例子，var err *MyErr 的时候，interface 存的是 (*MyErr,nil)，这个时候 就不是nil了
 
+参考：https://golang.design/go-questions/interface/dynamic-typing/
 */
