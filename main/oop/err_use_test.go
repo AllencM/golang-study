@@ -14,3 +14,7 @@ func TestHandleError(t *testing.T) {
 	HandleError(args)
 
 }
+
+func TestFly(t *testing.T) {
+	fly()
+}
