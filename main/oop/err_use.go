@@ -130,10 +130,8 @@ func fly() {
 	fmt.Printf("%T,%v\n", err, err)
 	fmt.Println(err == nil)
 	// tm 竟然是false 原因是 error 是个接口，动态类型和动态值都是nil 才是nil，现在动态类型已经是 *MyError了,只是没有值而已
-
 	var err2 *MyError
 	fmt.Println(err2 == nil)
-
 }
 
 /*
